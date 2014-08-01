@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="162dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1"
+    android:background="@color/grey_light"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:layout_width="157dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Large Text"
+            android:id="@+id/propertyNameView"
+            android:layout_marginTop="6dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/selectedContainer" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/propertyNameView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:id="@+id/selectedContainer"
+            android:padding="2dp"
+            android:background="@android:color/black">
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="com.indianwebs.catalog.app.views.IWOptionView"
+            android:id="@+id/selectedView"
+            android:background="@android:color/white"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/headerLabel"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/marker_back"
+            android:layout_toStartOf="@+id/scrollView"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/scrollView"
+            android:src="@drawable/marker_back" />
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_gravity="left|center_vertical"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="false"
+            android:layout_below="@+id/headerLabel"
+            android:fillViewport="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:scrollbars="none"
+            android:layout_marginTop="6dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollLayout">
+
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/marker"
+            android:layout_gravity="right|center_vertical"
+            android:layout_toRightOf="@+id/scrollView"
+            android:src="@drawable/marker"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+</LinearLayout>

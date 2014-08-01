@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.indianwebs.catalog.app.ModelActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:id="@+id/content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/tabHost"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView4"
+            android:src="@drawable/cabinet"
+            android:paddingTop="100dp" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/relativeLayout"
+        android:layout_above="@+id/tabHost"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:id="@+id/marker_back"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/extraButton"
+            android:src="@drawable/menu_top"
+            android:layout_alignTop="@+id/marker_back"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/marker_back"
+            android:focusableInTouchMode="false" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/homeButton"
+            android:src="@drawable/menu_home"
+            android:layout_alignBottom="@+id/extraButton"
+            android:layout_toLeftOf="@+id/extraButton"
+            android:layout_marginRight="10dp" />
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/extraMenu"
+            android:visibility="gone"
+            android:layout_alignParentStart="false"
+            android:layout_alignRight="@+id/extraButton"
+            android:layout_below="@+id/extraButton">
+
+            <view
+                class="com.indianwebs.catalog.app.views.Triangle"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:id="@+id/view2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/extraMenuList"
+                android:layout_gravity="left|center_vertical"
+                android:background="#00ffffff"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/view2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeButton"
+            android:id="@+id/homeMenu"
+            android:visibility="gone"
+            android:layout_alignRight="@+id/homeButton">
+
+            <view
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                class="com.indianwebs.catalog.app.views.Triangle"
+                android:id="@+id/view"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeMenuList"
+                android:layout_gravity="left|center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:background="#00ffffff"
+                android:layout_below="@+id/view" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@android:color/black"
+            android:padding="2dp">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:id="@+id/selectorView"
+                android:clickable="true"></FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <TabHost
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabHost"
+        android:layout_gravity="left|bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="800dp"
+                android:layout_height="35dp"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</RelativeLayout>
