@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.indianwebs.catalog.app.Catalog"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/logo"
+        android:layout_marginLeft="10dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonClose"
+        android:background="@color/grey_soft"
+        android:layout_marginTop="-12dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="50"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageViewTable"
+                android:src="@drawable/cat1"
+                android:clickable="true" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="false"
+            android:layout_weight="50"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageViewCabs"
+                android:src="@drawable/cat2"
+                android:clickable="true" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X  Catalogues"
+        android:id="@+id/buttonClose"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/button_rounded_soft_grey"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textStyle="bold" />
+</RelativeLayout>

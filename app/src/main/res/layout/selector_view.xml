@@ -20,9 +20,9 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Large Text"
             android:id="@+id/propertyNameView"
-            android:layout_marginTop="6dp"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/selectedContainer" />
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -41,13 +41,24 @@
             android:id="@+id/selectedView"
             android:background="@android:color/white"/>
         </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="2dp"
+            android:layout_height="140dp"
+            android:background="@color/grey_standard"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"></LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="6dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,51 +67,54 @@
             android:text="Medium Text"
             android:id="@+id/headerLabel"
             android:layout_gravity="left|top"
-            android:layout_marginTop="6dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+            android:layout_toRightOf="@+id/marker_back"
+            android:layout_toEndOf="@+id/marker_back"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/scrollView"
+            android:layout_alignEnd="@+id/scrollView"
+            android:background="@color/grey_scroll" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:id="@+id/marker_back"
-            android:layout_toStartOf="@+id/scrollView"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/scrollView"
             android:src="@drawable/marker_back" />
 
-        <HorizontalScrollView
+        <com.indianwebs.catalog.app.views.IWScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/scrollView"
             android:layout_gravity="left|center_vertical"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="10dp"
             android:layout_alignParentBottom="false"
-            android:layout_below="@+id/headerLabel"
             android:fillViewport="false"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:scrollbars="none"
-            android:layout_marginTop="6dp">
+            android:layout_toLeftOf="@+id/marker"
+            android:layout_below="@+id/headerLabel"
+            android:layout_toRightOf="@+id/marker_back"
+            android:background="@color/grey_scroll"
+            android:paddingBottom="10dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/scrollLayout">
+                android:id="@+id/scrollLayout"
+                android:paddingRight="5dp">
 
             </RelativeLayout>
-        </HorizontalScrollView>
+        </com.indianwebs.catalog.app.views.IWScrollView>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:id="@+id/marker"
             android:layout_gravity="right|center_vertical"
-            android:layout_toRightOf="@+id/scrollView"
             android:src="@drawable/marker"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
 </LinearLayout>

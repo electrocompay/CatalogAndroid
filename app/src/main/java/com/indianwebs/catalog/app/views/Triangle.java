@@ -29,8 +29,8 @@ public class Triangle extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int width = 20;
-        int offset = 15;
+     //   int width = 20;
+     //   int offset = 15;
 
         Paint paint = new Paint();
 
@@ -39,9 +39,9 @@ public class Triangle extends View {
         paint.setAntiAlias(true);
 
         Path path = new Path();
-        path.moveTo(getWidth() - width - offset, 0);
-        path.lineTo(getWidth()- offset, getHeight());
-        path.lineTo(getWidth() - 2*width - offset, getHeight());
+        path.moveTo(0, getHeight());
+        path.lineTo(getWidth() / 2, 0);
+        path.lineTo(getWidth(), getHeight());
         path.close();
         canvas.drawPath(path, paint);
     }

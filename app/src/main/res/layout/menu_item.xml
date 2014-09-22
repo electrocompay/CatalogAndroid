@@ -15,5 +15,5 @@
         android:textColor="@color/grey_dark"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textIsSelectable="true" />
+        android:textIsSelectable="false"/>
 </RelativeLayout>

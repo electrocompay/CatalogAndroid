@@ -22,7 +22,8 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/tabHost"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="80dp"
+        android:background="#ffffff">
 
         <ImageView
             android:layout_width="match_parent"
@@ -73,24 +74,46 @@
             android:layout_toLeftOf="@+id/extraButton"
             android:layout_marginRight="10dp" />
 
+        <view
+            class="com.indianwebs.catalog.app.views.Triangle"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:id="@+id/extraTR"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="4dp"
+            android:layout_below="@+id/extraButton"
+            android:layout_alignLeft="@+id/extraButton"
+            android:layout_toRightOf="@+id/extraButton"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="0dp"
+            android:focusableInTouchMode="false"
+            android:visibility="gone" />
+
+        <view
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            class="com.indianwebs.catalog.app.views.Triangle"
+            android:id="@+id/homeTR"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="0dp"
+            android:layout_below="@+id/homeButton"
+            android:layout_alignLeft="@+id/homeButton"
+            android:layout_alignRight="@+id/homeButton"
+            android:layout_marginLeft="4dp"
+            android:visibility="gone" />
+
         <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/extraMenu"
             android:visibility="gone"
-            android:layout_alignParentStart="false"
             android:layout_alignRight="@+id/extraButton"
-            android:layout_below="@+id/extraButton">
-
-            <view
-                class="com.indianwebs.catalog.app.views.Triangle"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:id="@+id/view2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp" />
+            android:layout_below="@+id/extraTR"
+            android:padding="0dp"
+            android:layout_marginTop="1dp">
 
             <ListView
                 android:layout_width="wrap_content"
@@ -98,27 +121,20 @@
                 android:id="@+id/extraMenuList"
                 android:layout_gravity="left|center_vertical"
                 android:background="#00ffffff"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/view2" />
+                android:dividerHeight="1dp"
+                android:divider="@android:color/transparent" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/homeButton"
             android:id="@+id/homeMenu"
             android:visibility="gone"
-            android:layout_alignRight="@+id/homeButton">
-
-            <view
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                class="com.indianwebs.catalog.app.views.Triangle"
-                android:id="@+id/view"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp" />
+            android:layout_alignRight="@+id/homeButton"
+            android:layout_below="@+id/homeTR"
+            android:padding="0dp"
+            android:paddingTop="1dp"
+            android:layout_marginTop="1dp">
 
             <ListView
                 android:layout_width="wrap_content"
@@ -126,9 +142,10 @@
                 android:id="@+id/homeMenuList"
                 android:layout_gravity="left|center_vertical"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dp"
                 android:background="#00ffffff"
-                android:layout_below="@+id/view" />
+                android:dividerHeight="1dp"
+                android:divider="@android:color/transparent"
+                android:fastScrollEnabled="true" />
 
         </RelativeLayout>
 

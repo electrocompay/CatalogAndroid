@@ -2,7 +2,9 @@ package com.indianwebs.catalog.app.views;
 
 import android.content.Context;
 import android.os.Build;
+import android.text.style.TextAppearanceSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by abelmiranda on 7/6/14.
  */
-public class IWSelectorView extends FrameLayout implements View.OnDragListener, TabHost.TabContentFactory {
+public class IWSelectorView extends FrameLayout implements TabHost.TabContentFactory {
 
 
     @Override
@@ -47,6 +49,7 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
 
 
     private RelativeLayout scrollView1;
+    private IWScrollView scrollView;
     private IWOptionView selectedView;
     private TextView headerLabel;
     private TextView propertyNameView;
@@ -91,6 +94,13 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
         LayoutInflater.from(getContext()).inflate(R.layout.selector_view, this);
 
         scrollView1 = (RelativeLayout) findViewById(R.id.scrollLayout);
+        scrollView = (IWScrollView) findViewById(R.id.scrollView);
+        scrollView.setOnScrollListener(new IWScrollView.OnScrollListener() {
+            @Override
+            public void scrolled() {
+                updateMarkers();
+            }
+        });
         selectedView = (IWOptionView) findViewById(R.id.selectedView);
         headerLabel = (TextView) findViewById(R.id.headerLabel);
         propertyNameView = (TextView) findViewById(R.id.propertyNameView);
@@ -98,7 +108,6 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
         marker_back = findViewById(R.id.marker_back);
 
         setSelected(true);
-        scrollView1.setOnDragListener(this);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
 
             setId(Utils.generateViewId());
@@ -106,14 +115,7 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
         } else {
 
             setId(View.generateViewId());
-
         }
-    }
-
-    @Override
-    public boolean onDrag(View view, DragEvent dragEvent) {
-        updateMarkers();
-        return false;
     }
 
     @Override
@@ -126,13 +128,18 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
         }
     }
 
+    public void prepare(){
+        propertyNameView.setText(String.format("Active %s", propertyName));
+        updateMarkers();
+    }
+
     private void updateMarkers() {
-        if (scrollView1.getScrollX() == 0)
-            marker_back.setVisibility(View.GONE);
+        if (scrollView.getScrollX() == 0)
+            marker_back.setVisibility(View.INVISIBLE);
         else
             marker_back.setVisibility(View.VISIBLE);
-        if (scrollView1.getScrollX() == scrollView1.getWidth() - scrollView1.getWidth())
-           marker.setVisibility(View.GONE);
+        if (scrollView.getScrollX() == scrollView1.getWidth() - scrollView.getWidth())
+           marker.setVisibility(View.INVISIBLE);
         else
            marker.setVisibility(View.VISIBLE);
     }
@@ -161,15 +168,13 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
 
         scrollView1.removeAllViews();
         subviews = new ArrayList<View>();
-        IWOptionView optionView = new IWOptionView(getContext());
-        int width = optionView.getWidth();
-        int height = optionView.getHeight();
+        IWOptionView optionView;
         int page = 0;
 
         if (uniqueCategory != null) {
             headerLabel.setText(String.format("Choose %s", uniqueCategory));
         } else {
-            headerLabel.setVisibility(View.INVISIBLE);
+            headerLabel.setVisibility(View.GONE);
         }
 
         String priorCategory = null;
@@ -178,12 +183,16 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
             optionView.setId(Utils.generateViewId());
             optionView.getLabel().setText(color.getName());
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(10, 10, 0, 0);
-            if (subviews.size() > 0)
+            if (subviews.size() > 0) {
                 params.addRule(RelativeLayout.RIGHT_OF, subviews.get(subviews.size() - 1).getId());
+                params.addRule(RelativeLayout.ALIGN_TOP, subviews.get(subviews.size() - 1).getId());
+                params.setMargins(10, 0, 0, 0);
+            }
             else {
+                params.setMargins(10, 10, 0, 0);
                 params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                if (uniqueCategory != null)
+                    params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
             }
             scrollView1.addView(optionView);
             subviews.add(optionView);
@@ -200,11 +209,16 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
             optionView.setImage(color.getFile());
             if (uniqueCategory == null && priorCategory != color.getCategory()) {
                 TextView newLabel = new TextView(getContext());
-          /*      ScrollView.LayoutParams params = scrollView1.generateLayoutParams()
-                initWithFrame:CGRectMake(optionView.frame.origin.x, -29, headerLabel.frame.size.width, headerLabel.frame.size.height)];
-                [newLabel setFont:headerLabel.font];
-                [newLabel setText:color.category];
-                [scrollView1 addSubview:newLabel];*/
+                newLabel.setTextAppearance(getContext(), android.R.style.TextAppearance_Medium);
+                newLabel.setId(Utils.generateViewId());
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                layoutParams.addRule(RelativeLayout.ALIGN_LEFT, optionView.getId());
+                params.addRule(RelativeLayout.BELOW, newLabel.getId());
+                newLabel.setText(color.getCategory());
+                newLabel.setLayoutParams(layoutParams);
+                scrollView1.addView(newLabel);
+
                 priorCategory = color.getCategory();
             }
         }
@@ -212,10 +226,8 @@ public class IWSelectorView extends FrameLayout implements View.OnDragListener, 
             optionView = (IWOptionView) subviews.get(0);
             optionView.setSelected(true);
             setSelection((Integer) optionView.getTag());
-           // scrollView1.contentSize = CGSizeMake((pageSize.width + 10) * page, pageSize.height);
-            HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.scrollView);
         }
-        updateMarkers();
+        prepare();
     }
 
     private void optionSelected(View view) {
