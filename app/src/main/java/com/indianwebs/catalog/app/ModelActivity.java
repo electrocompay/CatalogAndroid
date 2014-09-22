@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -78,6 +80,14 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
                 drawer.setFrontView(!drawer.isFrontView());
                 drawerChair.setFrontView(drawer.isFrontView());
                 drawAll();
+            }
+        });
+
+        findViewById(R.id.content).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Log.d("TAG", "Content TOUCHHHHHHHHHHHHH");
+                return false;
             }
         });
 
