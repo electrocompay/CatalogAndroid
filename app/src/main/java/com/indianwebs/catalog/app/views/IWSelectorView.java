@@ -2,18 +2,12 @@ package com.indianwebs.catalog.app.views;
 
 import android.content.Context;
 import android.os.Build;
-import android.text.style.TextAppearanceSpan;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -105,7 +99,7 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         headerLabel = (TextView) findViewById(R.id.headerLabel);
         propertyNameView = (TextView) findViewById(R.id.propertyNameView);
         marker = findViewById(R.id.marker);
-        marker_back = findViewById(R.id.marker_back);
+        marker_back = findViewById(R.id.logo);
 
         setSelected(true);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {

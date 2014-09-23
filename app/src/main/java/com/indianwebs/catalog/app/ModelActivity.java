@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -83,10 +84,10 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
             }
         });
 
-        findViewById(R.id.content).setOnTouchListener(new View.OnTouchListener() {
+        findViewById(android.R.id.content).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.d("TAG", "Content TOUCHHHHHHHHHHHHH");
+                closeMenus();
                 return false;
             }
         });
@@ -100,6 +101,13 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
         selectorChairModelView.setSelection(0);
         unlockDraw();
         drawAll();
+    }
+
+    private void closeMenus() {
+        homeMenu.setVisibility(View.GONE);
+        homeTR.setVisibility(View.GONE);
+        extraMenu.setVisibility(View.GONE);
+        extraTR.setVisibility(View.GONE);
     }
 
     private void createDrawers() {
@@ -274,13 +282,16 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
     }
 
     public Bitmap captureView(){
-        View view = content;
+        View view = findViewById(R.id.relativeLayout);
         //Create a Bitmap with the same dimensions
         Bitmap image = Bitmap.createBitmap(view.getWidth(),
                 view.getHeight(),
                 Bitmap.Config.ARGB_8888);
         //Draw the view inside the Bitmap
-        view.draw(new Canvas(image));
+        Canvas canvas = new Canvas(image);
+        canvas.drawColor(Color.WHITE);
+        content.draw(canvas);
+        findViewById(R.id.logo).draw(canvas);
         return image;
     }
 
@@ -372,6 +383,10 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
         if (selectorViewController == selectorModelView)
         {
             table.setModel((IWModel) color);
+            selectorTableColorView.setFilteredItems(table.getModel().getColors());
+            selectorTableColorView.setItems(IWColors.getTableColors());
+            selectorTableLegsColorView.setFilteredItems(table.getModel().getLegColors());
+            selectorTableLegsColorView.setItems(IWColors.getTableLegColors());
         } else if (selectorViewController == selectorTableColorView)
         {
             table.setColor(color);
@@ -408,8 +423,11 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
             }
 
             if (chair.getModel().getName().equals("Rafael-A") || chair.getModel().getName().equals("Rafael-S")) {
-            selectorChairColorView.setItems(Utils.colorListWithoutColor(IWColors.getChairColors(), ("15")));
-        }
+                selectorChairColorView.setItems(Utils.colorListWithoutColor(IWColors.getChairColors(), ("15")));
+            } else {
+                selectorChairColorView.setFilteredItems(chair.getModel().getColors());
+                selectorChairColorView.setItems(IWColors.getChairColors());
+            }
         } else if (selectorViewController == selectorChairColorView)
         {
             chair.setColor(color);
@@ -422,8 +440,8 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
                     chair.getModel().setLegColors((ArrayList<String>) Arrays.asList("26".split(",")));
                 } else if (color.getCode().equals("42")) {
                     chair.getModel().setLegColors((ArrayList<String>) Arrays.asList("24".split(",")));
+                }
             }
-        }
             selectorChairLegsColorView.setFilteredItems(chair.getModel().getLegColors());
             selectorChairLegsColorView.setItems(IWColors.getChairLegColors());
 

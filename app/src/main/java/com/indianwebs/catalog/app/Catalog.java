@@ -2,6 +2,7 @@ package com.indianwebs.catalog.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -92,7 +93,13 @@ public class Catalog extends Activity {
             startActivity(intent);
         } catch (Exception e)
         {
-            new AlertDialog.Builder(this).setTitle("Error").setMessage("No pdf viewer available.\nPlease, download it from Google Play Store.").setNegativeButton("OK", null).show();
+            new AlertDialog.Builder(this).setTitle("Error").setMessage("This app needs an PDF reader installed on your phone. Would you like to download it?").setNegativeButton("No", null).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.adobe.reader&hl=en"));
+                    Catalog.this.startActivity(intent);
+                }
+            }).show();
         }
     }
 

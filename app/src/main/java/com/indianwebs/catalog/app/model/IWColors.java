@@ -21,7 +21,7 @@ public class IWColors {
             tableModels.add(IWModel.modelWithName("Bluco", "bluco_CC_LL", "bluco_29_22.jpg", null, "22,23,24,25,26").withCategory("model"));
             tableModels.add(IWModel.modelWithName("Chateau", "chateau_CC_LL", "chateau_29_22.jpg", null, "22,23,24,25,26").withCategory("model"));
             tableModels.add(IWModel.modelWithName("Chrominox", "chrominox_CC_27", "chrominox_29_27.jpg", null, "27").withCategory("model"));
-            tableModels.add(IWModel.modelWithName("Elyps", "elyps_cc_LL", "elyps_29_22.jpg",null, "22,23,24,25,26,27").withCategory("model"));
+            tableModels.add(IWModel.modelWithName("Elyps", "elyps_CC_LL", "elyps_29_22.jpg",null, "22,23,24,25,26,27").withCategory("model"));
             tableModels.add(IWModel.modelWithName("Extens", "extens_CC_LL", "extens_29_22.jpg", "29,30,31,32,33,36,37,38,41", "22,23,24,25,26,27").withCategory("model"));
             tableModels.add(IWModel.modelWithName("Facet", "facet_CC_LL", "facet_29_22.jpg", "29,30,31,32,33,41,36,37,38", "22,23,24,25,26").withCategory("model"));
             tableModels.add(IWModel.modelWithName("Largo", "largo_CC_LL", "largo_29_22.jpg",null, "22,23,24,25,26,28").withCategory("model"));
@@ -76,8 +76,8 @@ public class IWColors {
             chairLegColors.add(IWColor.colorWithName("White", "22", "colors/white.jpg").withCategory("legs color"));
             chairLegColors.add(IWColor.colorWithName("Taupe", "23", "colors/taupe.jpg").withCategory("legs color"));
             chairLegColors.add(IWColor.colorWithName("Brown", "24", "colors/brown.jpg").withCategory("legs color"));
-            chairLegColors.add(IWColor.colorWithName("Antraciet", "25", "colors/antraciet 25.jpg").withCategory("legs color"));
-            chairLegColors.add(IWColor.colorWithName("Black", "26", "colors/black 90.jpg").withCategory("legs color"));
+            chairLegColors.add(IWColor.colorWithName("Antraciet", "25", "colors/antraciet_25.jpg").withCategory("legs color"));
+            chairLegColors.add(IWColor.colorWithName("Black", "26", "colors/black_90.jpg").withCategory("legs color"));
             chairLegColors.add(IWColor.colorWithName("Chrome", "27", "colors/chrome-Inox.jpg").withCategory("legs color"));
             chairLegColors.add(IWColor.colorWithName("Wood", "28", "colors/wood.jpg").withCategory("legs color"));
         }
@@ -133,12 +133,12 @@ public class IWColors {
             chairColors.add(IWColor.colorWithName("White 01", "14", "colors/white_01.jpg").withCategory("Skai color"));
             chairColors.add(IWColor.colorWithName("L. grey 617", "16", "colors/light_grey_617.jpg").withCategory("Skai color"));
             chairColors.add(IWColor.colorWithName("Taupe 062", "15", "colors/taupe_062.jpg").withCategory("Skai color"));
-            chairColors.add(IWColor.colorWithName("Antracite 605", "17", "antracite_605.jpg").withCategory("Skai color"));
-            chairColors.add(IWColor.colorWithName("Black 901", "18", "black_90.jpg").withCategory("Skai color"));
-            chairColors.add(IWColor.colorWithName("Brown", "42", "brown.jpg").withCategory("Skai color"));
-            chairColors.add(IWColor.colorWithName("White", "19", "white.jpg").withCategory("Textylene"));
-            chairColors.add(IWColor.colorWithName("Taupe", "20", "taupe.jpg").withCategory("Textylene"));
-            chairColors.add(IWColor.colorWithName("Grey", "21", "grey_21.jpg").withCategory("Textylene"));
+            chairColors.add(IWColor.colorWithName("Antracite 605", "17", "colors/antracite_605.jpg").withCategory("Skai color"));
+            chairColors.add(IWColor.colorWithName("Black 901", "18", "colors/black_90.jpg").withCategory("Skai color"));
+            chairColors.add(IWColor.colorWithName("Brown", "42", "colors/brown.jpg").withCategory("Skai color"));
+            chairColors.add(IWColor.colorWithName("White", "19", "colors/white.jpg").withCategory("Textylene"));
+            chairColors.add(IWColor.colorWithName("Taupe", "20", "colors/taupe.jpg").withCategory("Textylene"));
+            chairColors.add(IWColor.colorWithName("Grey", "21", "colors/grey_21.jpg").withCategory("Textylene"));
         }
 
         return chairColors;
