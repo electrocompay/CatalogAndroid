@@ -93,7 +93,7 @@ public class Catalog extends Activity {
             startActivity(intent);
         } catch (Exception e)
         {
-            new AlertDialog.Builder(this).setTitle("Error").setMessage("This app needs an PDF reader installed on your phone. Would you like to download it?").setNegativeButton("No", null).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this).setTitle("Error").setMessage("This feature needs an external app in order to read PDF files on your phone. Would you like to download it?").setNegativeButton("No", null).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.adobe.reader&hl=en"));
