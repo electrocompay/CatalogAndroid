@@ -44,6 +44,7 @@ public class TCModelActivity extends ModelActivity {
         selectorModelView.setSelection(0);
         selectorChairModelView.setSelection(0);
         unlockDraw();
+        drawAll();
     }
 
     @Override
