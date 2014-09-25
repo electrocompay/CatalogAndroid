@@ -17,13 +17,7 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".Catalog"
-            android:label="@string/title_activity_catalog"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name=".SplashActivity"
+            android:name=".TCSplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_splash"
             android:screenOrientation="sensorLandscape"

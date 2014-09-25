@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +38,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import de.joli.cataloglib.Catalog;
 
 
 public class ModelActivity extends Activity implements IWSelectorView.IWSelectorViewControllerDelegate {
@@ -290,8 +290,10 @@ public class ModelActivity extends Activity implements IWSelectorView.IWSelector
         //Draw the view inside the Bitmap
         Canvas canvas = new Canvas(image);
         canvas.drawColor(Color.WHITE);
+        View logo = findViewById(R.id.logo);
+        logo.draw(canvas);
+        canvas.translate(0, logo.getHeight());
         content.draw(canvas);
-        findViewById(R.id.logo).draw(canvas);
         return image;
     }
 

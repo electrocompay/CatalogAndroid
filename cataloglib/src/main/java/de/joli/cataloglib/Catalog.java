@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app;
+package de.joli.cataloglib;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -103,7 +103,7 @@ public class Catalog extends Activity {
         }
     }
 
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -121,5 +121,5 @@ public class Catalog extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

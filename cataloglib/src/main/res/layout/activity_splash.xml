@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="com.indianwebs.catalog.app.SplashActivity">
+    tools:context="de.joli.cataloglib.SplashActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:layout_gravity="center"
-        android:src="@drawable/splash_tables_1024_768"
         android:scaleType="center" />
+
 </FrameLayout>
