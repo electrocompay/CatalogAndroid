@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app.model;
+package de.joli.cataloglib.model;
 
 /**
  * Created by abelmiranda on 6/30/14.

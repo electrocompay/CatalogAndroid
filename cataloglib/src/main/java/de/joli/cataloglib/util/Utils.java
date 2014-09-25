@@ -1,11 +1,11 @@
-package com.indianwebs.catalog.app.util;
+package de.joli.cataloglib.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.indianwebs.catalog.app.model.IWColor;
+import de.joli.cataloglib.model.IWColor;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,15 +1,13 @@
-package com.indianwebs.catalog.app.drawers;
+package de.joli.cataloglib.drawers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import com.indianwebs.catalog.app.model.IWFurniture;
-import com.indianwebs.catalog.app.util.Utils;
+import de.joli.cataloglib.model.IWFurniture;
+import de.joli.cataloglib.util.Utils;
 
 /**
  * Created by abelmiranda on 6/30/14.

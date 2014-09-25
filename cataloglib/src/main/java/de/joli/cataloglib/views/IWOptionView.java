@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app.views;
+package de.joli.cataloglib.views;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -13,11 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.indianwebs.catalog.app.R;
-import com.indianwebs.catalog.app.util.Utils;
+import de.joli.cataloglib.R;
+import de.joli.cataloglib.util.Utils;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by abelmiranda on 7/6/14.

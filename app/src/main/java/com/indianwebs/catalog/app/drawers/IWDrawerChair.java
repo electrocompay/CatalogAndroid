@@ -3,7 +3,9 @@ package com.indianwebs.catalog.app.drawers;
 import android.content.Context;
 
 import com.indianwebs.catalog.app.model.IWChair;
-import com.indianwebs.catalog.app.model.IWFurniture;
+
+import de.joli.cataloglib.drawers.IWDrawer;
+import de.joli.cataloglib.model.IWFurniture;
 
 /**
  * Created by abelmiranda on 7/24/14.

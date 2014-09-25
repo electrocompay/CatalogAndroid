@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app.model;
+package de.joli.cataloglib.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

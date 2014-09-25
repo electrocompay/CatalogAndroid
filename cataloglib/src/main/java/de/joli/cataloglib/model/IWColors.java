@@ -1,6 +1,9 @@
-package com.indianwebs.catalog.app.model;
+package de.joli.cataloglib.model;
 
 import java.util.ArrayList;
+
+import de.joli.cataloglib.model.IWColor;
+import de.joli.cataloglib.model.IWModel;
 
 /**
  * Created by abelmiranda on 7/15/14.

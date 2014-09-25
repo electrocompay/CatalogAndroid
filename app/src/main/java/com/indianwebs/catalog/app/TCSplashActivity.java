@@ -14,6 +14,6 @@ public class TCSplashActivity extends SplashActivity {
 
     @Override
     protected Class<?> getActivityType() {
-        return ModelActivity.class;
+        return TCModelActivity.class;
     }
 }

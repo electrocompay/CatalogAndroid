@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app.views;
+package de.joli.cataloglib.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,7 +7,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.indianwebs.catalog.app.R;
+import de.joli.cataloglib.R;
 
 /**
  * Created by abelmiranda on 6/4/14.

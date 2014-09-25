@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="com.indianwebs.catalog.app.ModelActivity">
+    tools:context="com.indianwebs.catalog.app.TCModelActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -75,7 +75,7 @@
             android:layout_marginRight="10dp" />
 
         <view
-            class="com.indianwebs.catalog.app.views.Triangle"
+            class="de.joli.cataloglib.views.Triangle"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:id="@+id/extraTR"
@@ -93,7 +93,7 @@
         <view
             android:layout_width="100dp"
             android:layout_height="30dp"
-            class="com.indianwebs.catalog.app.views.Triangle"
+            class="de.joli.cataloglib.views.Triangle"
             android:id="@+id/homeTR"
             android:layout_alignParentRight="false"
             android:layout_alignParentEnd="false"

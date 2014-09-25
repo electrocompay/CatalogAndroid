@@ -1,4 +1,4 @@
-package com.indianwebs.catalog.app.views;
+package de.joli.cataloglib.views;
 
 import android.content.Context;
 import android.os.Build;
@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.indianwebs.catalog.app.R;
-import com.indianwebs.catalog.app.model.IWColor;
-import com.indianwebs.catalog.app.util.Utils;
-
 import java.util.ArrayList;
+
+import de.joli.cataloglib.R;
+import de.joli.cataloglib.model.IWColor;
+import de.joli.cataloglib.util.Utils;
 
 /**
  * Created by abelmiranda on 7/6/14.

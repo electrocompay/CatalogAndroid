@@ -1,5 +1,9 @@
 package com.indianwebs.catalog.app.model;
 
+import de.joli.cataloglib.model.IWColor;
+import de.joli.cataloglib.model.IWFurniture;
+import de.joli.cataloglib.model.IWModel;
+
 /**
  * Created by abelmiranda on 6/30/14.
  */
