@@ -157,8 +157,8 @@ public class TCModelActivity extends ModelActivity {
                     chair.getModel().setLegColors((ArrayList<String>) Arrays.asList("24".split(",")));
                 }
             }
-            selectorChairLegsColorView.setFilteredItems(chair.getModel().getLegColors());
-            selectorChairLegsColorView.setItems(IWColors.getChairLegColors());
+          /*  selectorChairLegsColorView.setFilteredItems(chair.getModel().getLegColors());
+            selectorChairLegsColorView.setItems(IWColors.getChairLegColors());*/
 
         } else if (selectorViewController == selectorChairLegsColorView)
         {
