@@ -1,1 +1,3 @@
-include ':app', ':cataloglib'
+include ':app', ':cataloglib', ':download_library'
+include ':zip_file'
+include ':licensing'

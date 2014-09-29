@@ -14,10 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import de.joli.cataloglib.util.Utils;
 
 public class Catalog extends Activity {
 
@@ -39,7 +42,7 @@ public class Catalog extends Activity {
             @Override
             public void onClick(View view){
 
-                viewCatalog(R.raw.joli_catalogus2014, "catalogustab2014.pdf");
+                viewCatalog("catalogustab2014.pdf");
 
             }
         });
@@ -48,39 +51,14 @@ public class Catalog extends Activity {
         imageViewCabs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewCatalog(R.raw.katalogus_joli_ok_lr, "cataloguscab2014.pdf");
+                viewCatalog("cataloguscab2014.pdf");
             }
         });
 
     }
 
-    private void viewCatalog(int id, String name) {
-        File outputFile = new File(Environment.getExternalStorageDirectory(), name);
-        if (!outputFile.exists()){
-            InputStream inputStream = getResources().openRawResource(id);
-            try {
-                outputFile.createNewFile();
-                FileOutputStream outputStream = new FileOutputStream(outputFile);
-
-                byte[] buf = new byte[8192];
-                while (true) {
-                    int length = inputStream.read(buf);
-                    if (length < 0)
-                        break;
-                    outputStream.write(buf, 0, length);
-                }
-
-                inputStream.close();
-                outputStream.close();
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
+    private void viewCatalog(String name) {
+        File outputFile = new File(Utils.getResourcesPath(this) + "pdf/", name);
         showPDF(outputFile.getPath());
     }
 

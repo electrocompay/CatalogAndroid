@@ -10,6 +10,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cataloglib" />
+            <option value="$PROJECT_DIR$/download_library" />
+            <option value="$PROJECT_DIR$/licensing" />
+            <option value="$PROJECT_DIR$/zip_file" />
           </set>
         </option>
       </GradleProjectSettings>
