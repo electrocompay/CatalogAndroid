@@ -198,7 +198,7 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     boolean expansionFilesDelivered() {
             String fileName = Helpers.getExpansionAPKFileName(this, true,
-                    1);
+                    2);
             if (!Helpers.doesFileExist(this, fileName, 330451026, false))
                 return false;
         return true;
