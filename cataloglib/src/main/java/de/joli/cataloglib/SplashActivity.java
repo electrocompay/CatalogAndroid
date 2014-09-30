@@ -7,13 +7,19 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Messenger;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.DownloaderClientMarshaller;
+import com.google.android.vending.expansion.downloader.DownloaderServiceMarshaller;
 import com.google.android.vending.expansion.downloader.Helpers;
+import com.google.android.vending.expansion.downloader.IDownloaderClient;
+import com.google.android.vending.expansion.downloader.IDownloaderService;
+import com.google.android.vending.expansion.downloader.IStub;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,13 +28,16 @@ import de.joli.cataloglib.expansion.ExpansionDownloader;
 import de.joli.cataloglib.util.OnProgressListener;
 import de.joli.cataloglib.util.Utils;
 
-public abstract class SplashActivity extends Activity{
+public abstract class SplashActivity extends Activity implements IDownloaderClient {
+
+    private ProgressBar progressBar;
+    private TextView textView;
+    private IDownloaderService mRemoteService;
+    private IStub downloaderClientStub;
 
     private class UnzipAsyncTask extends AsyncTask<String, Integer, Void>
     {
 
-        private ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        private TextView textView = (TextView) findViewById(R.id.textView);
 
         @Override
         protected Void doInBackground(String... strings) {
@@ -76,7 +85,13 @@ public abstract class SplashActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String APP_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmAV0pAJ+fFqkXrferkbeBUx/jNRsKQYD1J3haVzpLUaUC/QREWLKqRJm85/TdjyN0fDM57eLjAUTtIY5bnEawbhPsiqjjWezbFaX1i0M4FKgvzGoNIaLrL99OiRTNOj6uCmpEwVVCQnN7yiqt/03l9VptUtpB4CslLQLpZhWh59ufhNS9V5U9IIJAQDNFwKQhMJbKF3dtrvr+14xRsVw92gs7twF9qQmYbs81YUsWDuG84oV86LMNzc9ht3c8MgO+xXgUnZVroLKln1RrN9oqQX5g4rL7t+kLTvH8yQK+zKxcX87GstOy25OIF7s7gSxke/1DkTGppRszaShE8kp5QIDAQAB";
+        setContentView(R.layout.activity_splash);
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(getImageResourceId());
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        textView = (TextView) findViewById(R.id.textView);
 
 
         if (!expansionFilesDelivered()) {
@@ -95,52 +110,73 @@ public abstract class SplashActivity extends Activity{
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
-            // If download has started, initialize this activity to show
-            // download progress
+
+
             if (startResult != DownloaderClientMarshaller.NO_DOWNLOAD_REQUIRED) {
-                // This is where you do set up to display the download
-                // progress (next step)
+                // Instantiate a member instance of IStub
+                downloaderClientStub = DownloaderClientMarshaller.CreateStub(this,
+                        ExpansionDownloader.class);
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                progressBar.setMax(100);
+                textView.setText("Downloading resources");
 
                 return;
-            } // If the download wasn't necessary, fall through to start the app
-        }
-        setContentView(R.layout.activity_splash);
+            }
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageResource(getImageResourceId());
+        } else {
 
-        boolean closeSplash = true;
-        if (isObbDownloaded()){
             if (!isObbUnzipped()){
                 unzipObb();
-                closeSplash = false;
+                return;
             }
-        } else {
-            downloadObb();
-            unzipObb();
-            closeSplash = false;
         }
 
-        if (closeSplash) {
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     gotoMainActivity();
                 }
             }, 3000);
-        }
 
-   }
+    }
+
+    @Override
+    protected void onResume() {
+        if (null != downloaderClientStub) {
+            downloaderClientStub.connect(this);
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        if (null != downloaderClientStub) {
+            downloaderClientStub.disconnect(this);
+        }
+        super.onStop();
+    }
+
+    @Override
+    public void onServiceConnected(Messenger m) {
+        mRemoteService = DownloaderServiceMarshaller.CreateProxy(m);
+        mRemoteService.onClientUpdated(downloaderClientStub.getMessenger());
+    }
+
+    @Override
+    public void onDownloadProgress(DownloadProgressInfo progress) {
+        progressBar.setProgress((int) (progress.mOverallProgress / progress.mOverallTotal * 100));
+    }
+
+    @Override
+    public void onDownloadStateChanged(int newState) {
+    }
 
     private void gotoMainActivity() {
         Intent intent = new Intent(this, getActivityType());
         startActivity(intent);
         finish();
-    }
-
-    private void downloadObb() {
-
     }
 
     private void unzipObb() {
@@ -156,11 +192,6 @@ public abstract class SplashActivity extends Activity{
         return obbFile.exists();
     }
 
-    private boolean isObbDownloaded() {
-        File obbFile = new File(Utils.getExpansionFile(this));
-        return obbFile.exists();
-    }
-
     protected abstract int getImageResourceId();
 
     protected abstract Class<?> getActivityType();
@@ -168,7 +199,7 @@ public abstract class SplashActivity extends Activity{
     boolean expansionFilesDelivered() {
             String fileName = Helpers.getExpansionAPKFileName(this, true,
                     1);
-            if (!Helpers.doesFileExist(this, fileName, 279708549, false))
+            if (!Helpers.doesFileExist(this, fileName, 330451026, false))
                 return false;
         return true;
     }

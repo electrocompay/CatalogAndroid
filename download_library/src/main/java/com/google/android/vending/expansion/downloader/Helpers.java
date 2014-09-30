@@ -16,13 +16,12 @@
 
 package com.google.android.vending.expansion.downloader;
 
-import com.android.vending.expansion.downloader.R;
-
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
 import android.util.Log;
+
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -261,7 +260,7 @@ public class Helpers {
      * @return string resource ID for the corresponding string.
      */
     static public int getDownloaderStringResourceIDFromState(int state) {
-        switch (state) {
+       /* switch (state) {
             case IDownloaderClient.STATE_IDLE:
                 return R.string.state_idle;
             case IDownloaderClient.STATE_FETCHING_URL:
@@ -300,7 +299,8 @@ public class Helpers {
                 return R.string.state_failed_cancelled;
             default:
                 return R.string.state_unknown;
-        }
+        }*/
+    return 0;
     }
 
 }

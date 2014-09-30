@@ -130,7 +130,7 @@ public class DownloadNotification implements IDownloaderClient {
                     ongoingEvent = true;
                     break;
             }
-            mCurrentText = mContext.getString(stringDownloadID);
+            mCurrentText = ""; //mContext.getString(stringDownloadID);
             mCurrentTitle = mLabel.toString();
             mCurrentNotification.tickerText = mLabel + ": " + mCurrentText;
             mCurrentNotification.icon = iconResource;
