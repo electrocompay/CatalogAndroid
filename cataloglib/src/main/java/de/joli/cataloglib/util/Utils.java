@@ -1,25 +1,17 @@
 package de.joli.cataloglib.util;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.os.RecoverySystem;
 import android.util.Log;
-import android.widget.ProgressBar;
 
-import com.android.vending.expansion.zipfile.APEZProvider;
-import com.android.vending.expansion.zipfile.APKExpansionSupport;
-import com.android.vending.expansion.zipfile.ZipResourceFile;
-
+import de.joli.cataloglib.expansion.ExpansionDownloader;
 import de.joli.cataloglib.model.IWColor;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,7 +30,7 @@ public class Utils {
 
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
     private static final int BUFFER_SIZE = 8192;
-    private static final String OBB_FILE = "main.1.de.joli.catalog";
+    private static final String OBB_FILE = String.format("main.%d.de.joli.catalog", ExpansionDownloader.EXPANSION_VERSION);
 
     /**
      * Generate a value suitable for use in .
@@ -67,7 +59,7 @@ public class Utils {
     }
 
     public static String getResourcesPath(Context context){
-        return getExpansionFileDirectory(context) + OBB_FILE + "/";
+        return context.getExternalFilesDir(null).getAbsolutePath() + "/";
     }
 
     public static Bitmap getBitmapFromAsset(Context context, String filePath) {

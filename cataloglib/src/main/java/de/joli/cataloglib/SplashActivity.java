@@ -171,6 +171,9 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     @Override
     public void onDownloadStateChanged(int newState) {
+        if (newState == IDownloaderClient.STATE_COMPLETED){
+            unzipObb();
+        }
     }
 
     private void gotoMainActivity() {
@@ -182,14 +185,14 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
     private void unzipObb() {
         String resourcePath = Utils.getResourcesPath(this);
         File file = new File(resourcePath);
-        if (!file.exists()){
+        if (!file.exists() || file.listFiles().length == 0){
             new UnzipAsyncTask().execute(resourcePath);
         }
     }
 
     private boolean isObbUnzipped() {
         File obbFile = new File(Utils.getResourcesPath(this));
-        return obbFile.exists();
+        return obbFile.exists() && obbFile.listFiles().length > 0;
     }
 
     protected abstract int getImageResourceId();
@@ -198,7 +201,7 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     boolean expansionFilesDelivered() {
             String fileName = Helpers.getExpansionAPKFileName(this, true,
-                    2);
+                    ExpansionDownloader.EXPANSION_VERSION);
             if (!Helpers.doesFileExist(this, fileName, 330451026, false))
                 return false;
         return true;

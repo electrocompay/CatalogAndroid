@@ -16,7 +16,6 @@
 
 package com.google.android.vending.expansion.downloader.impl;
 
-import com.android.vending.expansion.downloader.R;
 import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.DownloaderClientMarshaller;
 import com.google.android.vending.expansion.downloader.Helpers;
@@ -82,7 +81,7 @@ public class DownloadNotification implements IDownloaderClient {
             if (newState == IDownloaderClient.STATE_IDLE || null == mContentIntent) {
                 return;
             }
-            int stringDownloadID;
+         //   int stringDownloadID;
             int iconResource;
             boolean ongoingEvent;
 
@@ -90,27 +89,27 @@ public class DownloadNotification implements IDownloaderClient {
             switch (newState) {
                 case 0:
                     iconResource = android.R.drawable.stat_sys_warning;
-                    stringDownloadID = R.string.state_unknown;
+                   // stringDownloadID = R.string.state_unknown;
                     ongoingEvent = false;
                     break;
 
                 case IDownloaderClient.STATE_DOWNLOADING:
                     iconResource = android.R.drawable.stat_sys_download;
-                    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
+                 //   stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
                     ongoingEvent = true;
                     break;
 
                 case IDownloaderClient.STATE_FETCHING_URL:
                 case IDownloaderClient.STATE_CONNECTING:
                     iconResource = android.R.drawable.stat_sys_download_done;
-                    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
+                //    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
                     ongoingEvent = true;
                     break;
 
                 case IDownloaderClient.STATE_COMPLETED:
                 case IDownloaderClient.STATE_PAUSED_BY_REQUEST:
                     iconResource = android.R.drawable.stat_sys_download_done;
-                    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
+                //    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
                     ongoingEvent = false;
                     break;
 
@@ -120,13 +119,13 @@ public class DownloadNotification implements IDownloaderClient {
                 case IDownloaderClient.STATE_FAILED_SDCARD_FULL:
                 case IDownloaderClient.STATE_FAILED_UNLICENSED:
                     iconResource = android.R.drawable.stat_sys_warning;
-                    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
+               //     stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
                     ongoingEvent = false;
                     break;
 
                 default:
                     iconResource = android.R.drawable.stat_sys_warning;
-                    stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
+              //      stringDownloadID = Helpers.getDownloaderStringResourceIDFromState(newState);
                     ongoingEvent = true;
                     break;
             }
