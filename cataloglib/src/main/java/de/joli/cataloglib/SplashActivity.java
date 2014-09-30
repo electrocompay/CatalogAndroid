@@ -166,7 +166,8 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     @Override
     public void onDownloadProgress(DownloadProgressInfo progress) {
-        progressBar.setProgress((int) (progress.mOverallProgress / progress.mOverallTotal * 100));
+        int value = (int) ((progress.mOverallProgress / (float) progress.mOverallTotal) * 100);
+        progressBar.setProgress(value);
     }
 
     @Override

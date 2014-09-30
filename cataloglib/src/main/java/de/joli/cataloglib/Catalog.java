@@ -6,19 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 import de.joli.cataloglib.util.Utils;
 
@@ -42,7 +34,7 @@ public class Catalog extends Activity {
             @Override
             public void onClick(View view){
 
-                viewCatalog("catalogustab2014.pdf");
+                viewCatalog("joli_catalogus2014.pdf");
 
             }
         });
@@ -51,7 +43,7 @@ public class Catalog extends Activity {
         imageViewCabs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewCatalog("cataloguscab2014.pdf");
+                viewCatalog("katalogus_joli_ok_lr.pdf");
             }
         });
 
@@ -59,7 +51,7 @@ public class Catalog extends Activity {
 
     private void viewCatalog(String name) {
         File outputFile = new File(Utils.getResourcesPath(this) + "pdf/", name);
-        showPDF(outputFile.getPath());
+        showPDF(outputFile.getAbsolutePath());
     }
 
 
