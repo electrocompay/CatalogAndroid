@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Catalog.iml" filepath="$PROJECT_DIR$/Catalog.iml" />
       <module fileurl="file://$PROJECT_DIR$/CatalogAndroid.iml" filepath="$PROJECT_DIR$/CatalogAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/catalogcabinets/catalogcabinets.iml" filepath="$PROJECT_DIR$/catalogcabinets/catalogcabinets.iml" />
       <module fileurl="file://$PROJECT_DIR$/cataloglib/cataloglib.iml" filepath="$PROJECT_DIR$/cataloglib/cataloglib.iml" />
       <module fileurl="file://$PROJECT_DIR$/download_library/download_library.iml" filepath="$PROJECT_DIR$/download_library/download_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/licensing/licensing.iml" filepath="$PROJECT_DIR$/licensing/licensing.iml" />
