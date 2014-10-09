@@ -231,9 +231,9 @@ public class IWDrawerCabinet extends IWDrawer {
     @Override
     public ImageView addLayer(String imageName){
         ImageView layer = super.addLayer(imageName + ".png");
-        if (layer != null) {
+     /*   if (layer != null) {
             layer.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        }
+        }*/
         return layer;
     }
 

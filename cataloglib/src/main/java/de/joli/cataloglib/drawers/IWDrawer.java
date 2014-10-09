@@ -2,6 +2,9 @@ package de.joli.cataloglib.drawers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,10 +21,18 @@ public class IWDrawer {
     private ViewGroup view;
     private boolean frontView = true;
     private int offsetY = 0;
+    private Bitmap bitmap;
+    private Canvas canvas;
+    private ImageView imageView;
+    private Paint paint = new Paint();
 
     public IWDrawer(Context context)
     {
         this.context = context;
+        imageView = new ImageView(getContext());
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        imageView.setLayoutParams(params);
     }
 
     public void drawFurniture(IWFurniture furniture)
@@ -35,12 +46,14 @@ public class IWDrawer {
         if (image == null) {
             Log.d("MISSING IMAGE: %@", imageName);
         } else {
-            ImageView imageView = new ImageView(getContext());
-            imageView.setImageBitmap(image);
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            imageView.setLayoutParams(params);
-            getView().addView(imageView);
+            if (bitmap == null) {
+                bitmap = Bitmap.createBitmap(image.getWidth(), image.getHeight(), Bitmap.Config.ARGB_8888);
+                canvas = new Canvas(bitmap);
+                imageView.setImageBitmap(image);
+            }
+
+            canvas.drawBitmap(image, 0, 0, paint);
+
             return imageView;
         }
         return  null;
@@ -49,7 +62,11 @@ public class IWDrawer {
 
     public void clear()
     {
-        getView().removeAllViews();
+        if (canvas != null) {
+            canvas.drawColor(Color.WHITE);
+            imageView.setImageBitmap(null);
+            imageView.setImageBitmap(bitmap);
+        }
     };
 
     public Context getContext() {
@@ -63,6 +80,7 @@ public class IWDrawer {
 
     public void setView(ViewGroup view) {
         this.view = view;
+        this.view.addView(imageView);
     }
 
     public boolean isFrontView() {
