@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/cataloglib/cataloglib.iml" filepath="$PROJECT_DIR$/cataloglib/cataloglib.iml" />
       <module fileurl="file://$PROJECT_DIR$/download_library/download_library.iml" filepath="$PROJECT_DIR$/download_library/download_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/licensing/licensing.iml" filepath="$PROJECT_DIR$/licensing/licensing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wheel/wheel.iml" filepath="$PROJECT_DIR$/wheel/wheel.iml" />
       <module fileurl="file://$PROJECT_DIR$/zip_file/zip_file.iml" filepath="$PROJECT_DIR$/zip_file/zip_file.iml" />
     </modules>
   </component>

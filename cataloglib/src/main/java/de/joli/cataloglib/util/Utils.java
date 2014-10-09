@@ -30,7 +30,7 @@ public class Utils {
 
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
     private static final int BUFFER_SIZE = 8192;
-    private static final String OBB_FILE = String.format("main.%d.de.joli.catalog", ExpansionDownloader.EXPANSION_VERSION);
+    private static final String OBB_FILE = String.format("main.%d.", ExpansionDownloader.EXPANSION_VERSION);
 
     /**
      * Generate a value suitable for use in .
@@ -55,7 +55,7 @@ public class Utils {
     }
 
     public static String getExpansionFile(Context context){
-        return getExpansionFileDirectory(context) + OBB_FILE + ".obb";
+        return getExpansionFileDirectory(context) + OBB_FILE + context.getApplicationContext().getPackageName() + ".obb";
     }
 
     public static String getResourcesPath(Context context){
@@ -93,12 +93,11 @@ public class Utils {
             try {
                 int counter = 0;
 
-                ZipFile zFile = new ZipFile(zipFile);
-                int totalEntries = zFile.size();
+//                ZipFile zFile = new ZipFile(new File(zipFile), ZipFile.OPEN_READ);
+                int totalEntries = (int) new File(zipFile).length();
                 onProgressListener.getTotalEntries(totalEntries);
                 ZipEntry ze = null;
                 while ((ze = zin.getNextEntry()) != null) {
-                    counter++;
                     String path = location + ze.getName();
                     File unzipFile = new File(path);
 
@@ -124,13 +123,13 @@ public class Utils {
                             }
 
                             zin.closeEntry();
+                            counter+= unzipFile.length();
                         }
                         finally {
                             fout.flush();
                             fout.close();
                         }
                     }
-
                     if (onProgressListener != null){
                         onProgressListener.progress(counter);
                     }

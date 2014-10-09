@@ -17,7 +17,7 @@
 package com.google.android.vending.expansion.downloader.impl;
 
 /**
- * Uses the class-loader model to utilize the updated notification builders in
+ * Uses the class-loader de.joli.catalogcabinets.model to utilize the updated notification builders in
  * Honeycomb while maintaining a compatible version for older devices.
  */
 public class CustomNotificationFactory {

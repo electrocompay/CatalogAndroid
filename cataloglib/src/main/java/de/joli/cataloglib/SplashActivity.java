@@ -191,7 +191,7 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
         }
     }
 
-    private boolean isObbUnzipped() {
+    protected boolean isObbUnzipped() {
         File obbFile = new File(Utils.getResourcesPath(this));
         return obbFile.exists() && obbFile.listFiles().length > 0;
     }
@@ -200,7 +200,7 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     protected abstract Class<?> getActivityType();
 
-    boolean expansionFilesDelivered() {
+    protected boolean expansionFilesDelivered() {
             String fileName = Helpers.getExpansionAPKFileName(this, true,
                     ExpansionDownloader.EXPANSION_VERSION);
             if (!Helpers.doesFileExist(this, fileName, 330451026, false))

@@ -7,18 +7,17 @@ The following files were *not* copied into the new Gradle project; you
 should evaluate whether these are still needed in your project and if
 so manually move them:
 
-* aidl/
-* aidl/ILicenseResultListener.aidl
-* aidl/ILicensingService.aidl
+* .DS_Store
+* default.properties
 
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => licensing/src/main/AndroidManifest.xml
-* res/ => licensing/src/main/res/
-* src/ => licensing/src/main/java/
+* AndroidManifest.xml => wheel/src/main/AndroidManifest.xml
+* res/ => wheel/src/main/res/
+* src/ => wheel/src/main/java/
 
 Next Steps:
 -----------

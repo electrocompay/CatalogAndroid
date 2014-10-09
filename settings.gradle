@@ -1,3 +1,4 @@
 include ':app', ':cataloglib', ':download_library', ':catalogcabinets'
 include ':zip_file'
 include ':licensing'
+include ':wheel'

@@ -82,10 +82,10 @@ public class TCModelActivity extends ModelActivity {
     @Override
     protected void createTabs() {
         super.createTabs();
-        selectorModelView = addTabWithSelector("modelTab", "1. Table Model", IWColors.getTableModels(), "model");
+        selectorModelView = addTabWithSelector("modelTab", "1. Table Model", IWColors.getTableModels(), "de.joli.catalogcabinets.model");
         selectorTableColorView = addTabWithSelector("colorTab", "2. Table Color", IWColors.getTableColors(), "color");
         selectorTableLegsColorView = addTabWithSelector("legTab", "3. Table Legs Color", IWColors.getTableLegColors(), "leg color");
-        selectorChairModelView = addTabWithSelector("chairModelTab", "4. Chair Model", IWColors.getChairModels(), "model");
+        selectorChairModelView = addTabWithSelector("chairModelTab", "4. Chair Model", IWColors.getChairModels(), "de.joli.catalogcabinets.model");
         selectorChairColorView = addTabWithSelector("chairColorTab", "5. Chair Color", IWColors.getChairColors(), "color");
         selectorChairLegsColorView = addTabWithSelector("chairLegTab", "6. Chair Legs Color", IWColors.getChairLegColors(), "leg color");
     }

@@ -27,6 +27,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import de.joli.cataloglib.model.IWColor;
+import de.joli.cataloglib.model.IWModel;
 import de.joli.cataloglib.views.IWSelectorView;
 
 /**
@@ -321,7 +322,7 @@ public abstract class ModelActivity extends Activity implements IWSelectorView.I
         return newSelectorView;
      }
 
-    private void addTab(String tag, String title, TabHost.TabContentFactory view)
+    protected void addTab(String tag, String title, TabHost.TabContentFactory view)
     {
         TabHost.TabSpec tabSpec1 = tabHost.newTabSpec(tag);
         View customTab = getLayoutInflater().inflate(R.layout.tab, null);

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="162dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1"
+    android:background="@color/grey_light"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:layout_width="157dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="3dp">
+
+        <view
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            class="de.joli.catalogcabinets.views.IWPickerView"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/pickermodel"
+            android:fillViewport="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="3dp">
+
+        <view
+            class="de.joli.catalogcabinets.views.IWPickerView"
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            android:id="@+id/picker2"
+            android:fillViewport="true"/>
+
+        <view
+            class="de.joli.catalogcabinets.views.IWPickerView"
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            android:id="@+id/picker3"
+            android:fillViewport="true"/>
+
+        <view
+            class="de.joli.catalogcabinets.views.IWPickerView"
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            android:id="@+id/picker4"
+            android:fillViewport="true"/>
+
+        <view
+            class="de.joli.catalogcabinets.views.IWPickerView"
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            android:id="@+id/picker5"
+            android:fillViewport="true" />
+    </LinearLayout>
+</LinearLayout>
