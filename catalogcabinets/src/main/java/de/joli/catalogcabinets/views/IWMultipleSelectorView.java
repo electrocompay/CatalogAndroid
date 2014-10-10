@@ -80,14 +80,14 @@ public class IWMultipleSelectorView extends FrameLayout implements TabHost.TabCo
             default:
                 break;
         }
-        panelColors.setDelegate(this);
+/*        panelColors.setDelegate(this);
         multipleContainer.addView(panelColors);
         selectorview.setItems(IWColors.cabinetColors());
         panelColors.setCabinet(cabinet);
         switch1.setOnCheckedChangeListener(this);
         switch2.setOnCheckedChangeListener(this);
 
-        customView = LayoutInflater.from(getContext()).inflate(R.layout.multiple_selector_view, this);
+        customView = LayoutInflater.from(getContext()).inflate(R.layout.multiple_selector_view, this);*/
     }
 
     public void setCabinet(IWCabinet cabinet) {
