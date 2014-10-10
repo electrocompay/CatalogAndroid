@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/switch2"
-            android:checked="false"
+            android:checked="true"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="3dp" />
@@ -68,7 +68,8 @@
             android:id="@+id/textView3"
             android:layout_above="@+id/switch2"
             android:layout_alignLeft="@+id/switch2"
-            android:layout_alignStart="@+id/switch2" />
+            android:layout_alignStart="@+id/switch2"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <FrameLayout
@@ -80,4 +81,5 @@
         android:layout_height="wrap_content"
         class="de.joli.cataloglib.views.IWSelectorView"
         android:id="@+id/view" />
+
 </LinearLayout>

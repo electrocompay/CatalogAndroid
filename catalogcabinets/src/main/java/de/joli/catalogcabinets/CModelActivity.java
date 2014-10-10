@@ -40,6 +40,7 @@ public class CModelActivity extends ModelActivity implements IWModelSelectorView
     private static final String TAB_MODEL_SELECTOR = "TAB_MODEL_SELECTOR";
     private static final String TAB_TOP_SELECTOR =  "TAB_TOP_SELECTOR";
     private static final String TAB_SIDE_SELECTOR = "TAB_SIDE_SELECTOR";
+    private static final String TAB_MULTIPLE_SELECTOR = "TAB_MULTIPLE_SELECTOR";
 
 
     @Override
@@ -87,9 +88,10 @@ public class CModelActivity extends ModelActivity implements IWModelSelectorView
             selectorSideView.setFilteredItems(cabinet.getModel().getLegColors());
             addTab(TAB_SIDE_SELECTOR, "3. Side Color", selectorSideView);
 
-    /*        selectorDoorsView = IWMultipleSelectorViewController alloc] initWithMode:MultipleSelectorModeNineColors];
-            [self prepareMultipleSelectorView:selectorDoorsView];
+            selectorDoorsView = new IWMultipleSelectorView(this, IWMultipleSelectorView.MultipleSelectorMode.MultipleSelectorModeNineColors);
+            prepareMultipleSelectorView(selectorDoorsView);
 
+    /*
             selectorDoorsJ193View = [[IWMultipleSelectorJ193ViewController alloc] initWithNibName:@"IWMultipleSelectorJ193ViewController" bundle:nil];
             [selectorDoorsJ193View setMode:MultipleSelectorModeFourColors];
 
@@ -118,6 +120,13 @@ public class CModelActivity extends ModelActivity implements IWModelSelectorView
             drawAll();
 
     }
+
+    private void prepareMultipleSelectorView(IWMultipleSelectorView multipleSelectorView){
+        multipleSelectorView.setCabinet(cabinet);
+        multipleSelectorView.setDelegate(this);
+        addTab(TAB_MULTIPLE_SELECTOR, "Doors", multipleSelectorView);
+    }
+
 
     private void prepareSelector(IWSelectorView selector, ArrayList<IWColor> colors){
         selector.setDelegate(this);
