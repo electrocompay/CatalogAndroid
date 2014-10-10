@@ -88,7 +88,7 @@ public class CModelActivity extends ModelActivity implements IWModelSelectorView
             selectorSideView.setFilteredItems(cabinet.getModel().getLegColors());
             addTab(TAB_SIDE_SELECTOR, "3. Side Color", selectorSideView);
 
-            selectorDoorsView = new IWMultipleSelectorView(this, IWMultipleSelectorView.MultipleSelectorMode.MultipleSelectorModeNineColors);
+            selectorDoorsView = new IWMultipleSelectorView(this, IWMultipleSelectorView.IWMultipleSelectorMode.MultipleSelectorModeNineColors);
             prepareMultipleSelectorView(selectorDoorsView);
 
     /*

@@ -17,9 +17,9 @@ public class CSplashActivity extends SplashActivity {
         return CModelActivity.class;
     }
 
-    @Override
+  /*  @Override
     protected boolean expansionFilesDelivered() {
         return true;
-    }
+    }*/
 
 }
