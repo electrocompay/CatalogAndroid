@@ -7,4 +7,8 @@ build/*
 
 .gradle/1.12/taskArtifacts/taskArtifacts.bin
 
+.gradle/*
+
 .idea/workspace.xml
+
+.gradle/1.12/taskArtifacts/outputFileStates.bin
