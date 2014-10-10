@@ -32,6 +32,7 @@ public class IWDrawer {
         imageView = new ImageView(getContext());
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        imageView.setPadding(20, 20, 20, 20);
         imageView.setLayoutParams(params);
     }
 

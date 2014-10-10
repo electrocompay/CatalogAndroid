@@ -37,27 +37,31 @@
             android:layout_width="157dp"
             android:layout_height="157dp"
             android:id="@+id/picker2"
-            android:fillViewport="true"/>
+            android:fillViewport="true"
+            android:layout_marginLeft="40dp" />
 
         <view
             class="de.joli.catalogcabinets.views.IWPickerView"
             android:layout_width="157dp"
             android:layout_height="157dp"
             android:id="@+id/picker3"
-            android:fillViewport="true"/>
+            android:fillViewport="true"
+            android:layout_marginLeft="30dp" />
 
         <view
             class="de.joli.catalogcabinets.views.IWPickerView"
             android:layout_width="157dp"
             android:layout_height="157dp"
             android:id="@+id/picker4"
-            android:fillViewport="true"/>
+            android:fillViewport="true"
+            android:layout_marginLeft="30dp" />
 
         <view
             class="de.joli.catalogcabinets.views.IWPickerView"
             android:layout_width="157dp"
             android:layout_height="157dp"
             android:id="@+id/picker5"
-            android:fillViewport="true" />
+            android:fillViewport="true"
+            android:layout_marginLeft="30dp" />
     </LinearLayout>
 </LinearLayout>
