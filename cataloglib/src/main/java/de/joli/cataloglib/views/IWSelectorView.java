@@ -28,8 +28,7 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         return this;
     }
 
-    public interface IWSelectorViewControllerDelegate
-    {
+    public interface IWSelectorViewControllerDelegate {
         public void didSelectColor(IWSelectorView selectorViewController, IWColor color);
     }
 
@@ -51,26 +50,34 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
     ArrayList<View> subviews;
     private View marker;
     private View marker_back;
+    private View selectedArea;
+    private boolean selectedAreaVisible;
 
-    public void setSelection(int index)
-    {
+    public void setSelection(int index) {
         selectedIndex = index;
         selectedColor = filteredList.get(selectedIndex);
         IWOptionView optionView = (IWOptionView) subviews.get(selectedIndex);
-        for (View oView : subviews)
-        {
+        for (View oView : subviews) {
             ((IWOptionView) oView).clearSelection();
         }
         optionView.setSelected(true);
         selectedView.getLabel().setText(optionView.getLabel().getText());
         selectedView.setImage(optionView.getImage());
         if (delegate != null) {
-            delegate.didSelectColor(this ,selectedColor);
+            delegate.didSelectColor(this, selectedColor);
         }
     }
 
     public IWSelectorView(Context context) {
         super(context);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+
+            setId(Utils.generateViewId());
+
+        } else {
+
+            setId(View.generateViewId());
+        }
         init();
     }
 
@@ -100,29 +107,21 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         propertyNameView = (TextView) findViewById(R.id.propertyNameView);
         marker = findViewById(R.id.marker);
         marker_back = findViewById(R.id.logo);
+        selectedArea = findViewById(R.id.selector_selected);
 
         setSelected(true);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-
-            setId(Utils.generateViewId());
-
-        } else {
-
-            setId(View.generateViewId());
-        }
     }
 
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
-        if (visibility == View.VISIBLE)
-        {
+        if (visibility == View.VISIBLE) {
             propertyNameView.setText(String.format("Active %s", propertyName));
             updateMarkers();
         }
     }
 
-    public void prepare(){
+    public void prepare() {
         propertyNameView.setText(String.format("Active %s", propertyName));
         updateMarkers();
     }
@@ -133,9 +132,9 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         else
             marker_back.setVisibility(View.VISIBLE);
         if (scrollView.getScrollX() == scrollView1.getWidth() - scrollView.getWidth())
-           marker.setVisibility(View.INVISIBLE);
+            marker.setVisibility(View.INVISIBLE);
         else
-           marker.setVisibility(View.VISIBLE);
+            marker.setVisibility(View.VISIBLE);
     }
 
     public ArrayList<IWColor> getItems() {
@@ -152,7 +151,7 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         for (IWColor color : items) {
             if (filteredItems == null || colorFiltered(color.getCode())) {
                 if (uniqueCategory != null) {
-                    if (uniqueCategory != color.getCategory()){
+                    if (uniqueCategory != color.getCategory()) {
                         uniqueCategory = null;
                     }
                 }
@@ -181,8 +180,7 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
                 params.addRule(RelativeLayout.RIGHT_OF, subviews.get(subviews.size() - 1).getId());
                 params.addRule(RelativeLayout.ALIGN_TOP, subviews.get(subviews.size() - 1).getId());
                 params.setMargins(10, 0, 0, 0);
-            }
-            else {
+            } else {
                 params.setMargins(10, 10, 0, 0);
                 params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                 if (uniqueCategory != null)
@@ -228,13 +226,12 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
         setSelection((Integer) view.getTag());
     }
 
-    boolean colorFiltered(String code)
-    {
+    boolean colorFiltered(String code) {
         for (String filteredCode : filteredItems) {
-        if (filteredCode.equals(code)) {
-            return true;
+            if (filteredCode.equals(code)) {
+                return true;
+            }
         }
-    }
         return false;
     }
 
@@ -280,5 +277,16 @@ public class IWSelectorView extends FrameLayout implements TabHost.TabContentFac
 
     public void setDelegate(IWSelectorViewControllerDelegate delegate) {
         this.delegate = delegate;
+    }
+
+    public boolean isSelectedAreaVisible() {
+        return selectedArea.getVisibility() == View.VISIBLE;
+    }
+
+    public void setSelectedAreaVisible(boolean selectedAreaVisible) {
+        if (selectedAreaVisible)
+            selectedArea.setVisibility(View.VISIBLE);
+        else
+            selectedArea.setVisibility(View.GONE);
     }
 }

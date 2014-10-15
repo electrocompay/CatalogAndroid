@@ -42,7 +42,7 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
         @Override
         protected Void doInBackground(String... strings) {
             try {
-                Utils.unzip(SplashActivity.this, Utils.getExpansionFile(SplashActivity.this), strings[0], new OnProgressListener() {
+                Utils.unzip(SplashActivity.this, Utils.getExpansionFile(SplashActivity.this, getExpansionVersion()), strings[0], new OnProgressListener() {
                     @Override
                     public void progress(int value) {
                         publishProgress(value);
@@ -202,10 +202,14 @@ public abstract class SplashActivity extends Activity implements IDownloaderClie
 
     protected boolean expansionFilesDelivered() {
             String fileName = Helpers.getExpansionAPKFileName(this, true,
-                    ExpansionDownloader.EXPANSION_VERSION);
-            if (!Helpers.doesFileExist(this, fileName, 330451026, false))
+                    getExpansionVersion());
+            if (!Helpers.doesFileExist(this, fileName, getExpansionFileSize(), false))
                 return false;
         return true;
     }
+
+    protected abstract int getExpansionVersion();
+
+    protected abstract long getExpansionFileSize();
 
 }

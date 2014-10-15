@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="350dp"
+    android:layout_height="160dp"
+    android:paddingLeft="10dp">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Doors"
+            android:id="@+id/textView"
+            android:layout_gravity="left|center_vertical"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <view
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:id="@+id/door1"
+                    android:tag="0"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout">
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door4"
+                    android:tag="3">
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout2">
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door7"
+                    android:tag="6"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door2"
+                    android:tag="1">
+
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout3" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door5"
+                    android:tag="4">
+
+                 </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout4" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door8"
+                    android:tag="7">
+
+                </view>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout2" >
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door3"
+                    android:tag="2">
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout5" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door6"
+                    android:tag="5">
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout6" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door9"
+                    android:tag="8">
+                </view>
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

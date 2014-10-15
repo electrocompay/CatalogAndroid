@@ -1,5 +1,7 @@
 package de.joli.catalogcabinets.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import de.joli.catalogcabinets.util.ColorUtil;
@@ -46,11 +48,11 @@ public class IWCabinet extends IWFurniture {
         colors = new ArrayList<IWColor>();
         drawers = new ArrayList<IWColor>();
         subModule = false;
-        oneColorMode = true;
+        oneColorMode = false;
         showLegs = true;
     }
 
-    public IWCabinet(IWCabinet cabinet){
+    public IWCabinet(IWCabinet cabinet) {
         this();
         subModule = true;
         model = cabinet.model;
@@ -64,7 +66,7 @@ public class IWCabinet extends IWFurniture {
     public void setModel(IWModel model) {
         if (this.model != model) {
             this.model = model;
-            if (useModules && !subModule) {
+            if (useModules() && !subModule) {
                 module2 = new IWCabinet(this);
                 module3 = new IWCabinet(this);
                 module4 = new IWCabinet(this);
@@ -115,18 +117,29 @@ public class IWCabinet extends IWFurniture {
     public void setSize(IWColor size) {
         if (this.size != size) {
             this.size = size;
-            if (this.useModules) {
-                String[] params = size.getCode().split(",");
-                int ndoors = Integer.parseInt(params[0]);
-                colors.clear();
-                for (int i = 0; i < ndoors; i++) {
-                    colors.add(color);
-                }
-                int ndrawers = Integer.parseInt(params[1]);
-                IWColor drawerColor = model.getCode().equals("J83") ? ColorUtil.colorByCode("29", IWColors.cabinetDrawerColors()) : ColorUtil.colorByCode("35", IWColors.cabinetDrawerColors());
-                drawers.clear();
-                for (int i = 0; i < ndrawers; i++) {
-                    drawers.add(drawerColor);
+            if (useModules()) {
+                if (size != null) {
+                    if (size.getCode() == null){
+                        colors.clear();
+                        drawers.clear();
+                        return;
+                    }
+                    String[] params = size.getCode().split(",");
+                    int ndoors = Integer.parseInt(params[0]);
+                    colors.clear();
+                    for (int i = 0; i < ndoors; i++) {
+                        colors.add(color);
+                    }
+                    try {
+                        int ndrawers = Integer.parseInt(params[1]);
+                        IWColor drawerColor = model.getCode().equals("J83") ? ColorUtil.colorByCode("29", IWColors.cabinetDrawerColors()) : ColorUtil.colorByCode("35", IWColors.cabinetDrawerColors());
+                        drawers.clear();
+                        for (int i = 0; i < ndrawers; i++) {
+                            drawers.add(drawerColor);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 colors.clear();

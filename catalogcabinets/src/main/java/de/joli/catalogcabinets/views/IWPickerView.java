@@ -3,9 +3,6 @@ package de.joli.catalogcabinets.views;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -20,15 +17,40 @@ import java.util.ArrayList;
 import de.joli.catalogcabinets.R;
 import de.joli.cataloglib.model.IWColor;
 import de.joli.cataloglib.util.Utils;
+import de.joli.cataloglib.views.IWScrollView;
 import kankan.wheel.widget.OnWheelChangedListener;
+import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.WheelViewAdapter;
 
 /**
  * Created by abel.miranda on 10/4/14.
  */
-public class IWPickerView extends FrameLayout implements OnWheelChangedListener, WheelViewAdapter{
+public class IWPickerView extends FrameLayout implements OnWheelChangedListener, WheelViewAdapter, OnWheelScrollListener {
 
+
+    @Override
+    public void onScrollingStarted(WheelView wheel) {
+
+    }
+
+    @Override
+    public void onScrollingFinished(WheelView wheel) {
+        int newValue = wheel.getCurrentItem();
+        if (selectionInvalid(newValue)) {
+            _pickerView.setCurrentItem(_lastRow, true);
+        } else {
+            IWColor newSelection = items.get(newValue);
+            if (newSelection != selection) {
+                _lastRow = newValue;
+                selection = newSelection;
+                if (onPickerViewChanged != null) {
+                    onPickerViewChanged.didSelectRow(this, selection);
+                }
+            }
+        }
+
+    }
 
     public interface OnPickerViewChanged {
 
@@ -43,7 +65,7 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     private String title;
     private IWColor selection;
     private boolean pkEnabled;
-    private int selectedIndex;
+//    private int selectedIndex;
     private int pkleft;
     private int pkright;
     private boolean dissableMoreThan1;
@@ -60,11 +82,15 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     };
 
     public void reset(){
-
+        if (items.size() > 0) {
+            _pickerView.setCurrentItem(0);
+            selection = items.get(0);
+        }
     };
 
     public void resetAndDisable(){
-
+        reset();
+        setEnabled(false);
     };
 
     public void refresh(){
@@ -99,7 +125,8 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
         addView(view);
         _pickerView = (WheelView) findViewById(R.id.picker_view);
         _label = (TextView) findViewById(R.id.textView);
-        _pickerView.addChangingListener(this);
+     //   _pickerView.addChangingListener(this);
+        _pickerView.addScrollingListener(this);
 
     }
 
@@ -135,11 +162,13 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     }
 
     public int getSelectedIndex() {
-        return selectedIndex;
+        //return selectedIndex;
+        return _pickerView.getCurrentItem();
     }
 
     public void setSelectedIndex(int selectedIndex) {
-        this.selectedIndex = selectedIndex;
+//        this.selectedIndex = selectedIndex;
+        _pickerView.setCurrentItem(0);
     }
 
     public boolean isDissableMoreThan1() {
@@ -234,6 +263,7 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
 
     private boolean selectionInvalid(int row){
         IWColor color = items.get(row);
+        if (color == null || color.getCode() == null) return false;
         return (pkleft == 1 || pkright == 1) && color.getCode().equals("1,0") || (dissableMoreThan1 && row > 1);
     }
 

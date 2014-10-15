@@ -12,7 +12,8 @@
     <RelativeLayout
         android:layout_width="157dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/selector_selected">
 
         <TextView
             android:layout_width="wrap_content"

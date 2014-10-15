@@ -30,7 +30,6 @@ public class Utils {
 
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
     private static final int BUFFER_SIZE = 8192;
-    private static final String OBB_FILE = String.format("main.%d.", ExpansionDownloader.EXPANSION_VERSION);
 
     /**
      * Generate a value suitable for use in .
@@ -54,8 +53,8 @@ public class Utils {
         return Environment.getExternalStorageDirectory() + "/Android/obb/" + context.getPackageName() + "/";
     }
 
-    public static String getExpansionFile(Context context){
-        return getExpansionFileDirectory(context) + OBB_FILE + context.getApplicationContext().getPackageName() + ".obb";
+    public static String getExpansionFile(Context context, int version){
+        return getExpansionFileDirectory(context) + String.format("main.%d.", version) + context.getApplicationContext().getPackageName() + ".obb";
     }
 
     public static String getResourcesPath(Context context){

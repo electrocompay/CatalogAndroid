@@ -16,4 +16,14 @@ public class TCSplashActivity extends SplashActivity {
     protected Class<?> getActivityType() {
         return TCModelActivity.class;
     }
+
+    @Override
+    protected long getExpansionFileSize() {
+        return 330451026;
+    }
+
+    @Override
+    protected int getExpansionVersion() {
+        return 2;
+    }
 }

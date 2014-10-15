@@ -82,7 +82,8 @@ public class IWModelSelectorView extends FrameLayout implements TabHost.TabConte
          picker3.setOnPickerViewChanged(this);
          picker4.setOnPickerViewChanged(this);
          picker5.setOnPickerViewChanged(this);
-         didSelectRow(pickerModel, pickerModel.getSelection());
+         pickerModel.setTitle("Model");
+         pickerModel.reset();
     }
 
 
@@ -92,6 +93,7 @@ public class IWModelSelectorView extends FrameLayout implements TabHost.TabConte
 
     public void setCabinet(IWCabinet cabinet) {
         this.cabinet = cabinet;
+        didSelectRow(pickerModel, pickerModel.getSelection());
     }
 
     @Override
@@ -171,6 +173,8 @@ public class IWModelSelectorView extends FrameLayout implements TabHost.TabConte
     }
 
     private void processSelectionModules(IWPickerView pickerView, IWColor color){
+
+        pickerModel.setTitle("Model");
 
         if (pickerView == pickerModel) {
             setModeCosYJoli83();
@@ -301,7 +305,7 @@ public class IWModelSelectorView extends FrameLayout implements TabHost.TabConte
     private void setModeCube(){
         picker2.setTitle("Type");
         picker3.setTitle("Size");
-        picker4.setVisibility(View.VISIBLE);
+        picker4.setVisibility(View.GONE);
         picker5.setVisibility(View.GONE);
     }
 

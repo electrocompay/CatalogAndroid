@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="350dp"
+    android:layout_height="160dp"
+    android:padding="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Doors"
+                android:id="@+id/textView"
+                android:layout_gravity="left|bottom"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <view
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:id="@+id/door1"
+                    android:tag="0"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout">
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/door2"
+                    android:tag="1">
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout2">
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Drawers"
+                android:id="@+id/textView2"
+                android:layout_gravity="left|bottom"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/picDrawer1"
+                    android:tag="2">
+
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout3" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/picDrawer2"
+                    android:tag="3">
+
+                 </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout4" >
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/picDrawer3"
+                    android:tag="4">
+
+                </view>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout2" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Stripe"
+                android:id="@+id/textView3"
+                android:layout_gravity="left|bottom"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <view
+                    class="de.joli.catalogcabinets.views.IWColorSelectorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/stripe"
+                    android:tag="5">
+                </view>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout5" >
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:id="@+id/frameLayout6" >
+
+            </FrameLayout>
+        </LinearLayout>
+
+</LinearLayout>

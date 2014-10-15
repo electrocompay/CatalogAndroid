@@ -50,6 +50,7 @@ public class IWDrawerCabinet extends IWDrawer {
         }
         String mask = "%s-%s%s-%s-%s%s-%d%s";
         String modelMask = "";
+
         if (cabinet.getSize().getCode().equals("1,0")) {
             modelMask = "1D";
         } else if (cabinet.getSize().getCode().equals("2,0")){
@@ -153,7 +154,8 @@ public class IWDrawerCabinet extends IWDrawer {
 
         if (cabinet.useModules()) {
             boolean sufix = false;
-            sufix = cabinet.getModule2().getColors().size() == 1;
+            if (cabinet.getModule2() != null)
+                sufix = cabinet.getModule2().getColors().size() == 1;
             drawCabinet(cabinet.getModule4(), 4, sufix);
             drawCabinet(cabinet.getModule3(), 3, sufix);
             drawCabinet(cabinet.getModule2(), 2, false);
