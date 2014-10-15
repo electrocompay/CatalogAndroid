@@ -37,5 +37,6 @@ public class IWDrawerTable extends IWDrawer {
             filename = filename.replace("CC", "00");
             addLayer(filename);
         }
+        commitDrawing();
     }
 }

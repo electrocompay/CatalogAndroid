@@ -32,13 +32,17 @@ public class IWDrawer {
         imageView = new ImageView(getContext());
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        imageView.setPadding(20, 20, 20, 20);
+        imageView.setPadding(20, 50, 20, 50);
         imageView.setLayoutParams(params);
     }
 
     public void drawFurniture(IWFurniture furniture)
     {
 
+    }
+
+    public void commitDrawing(){
+        imageView.setImageBitmap(bitmap);
     }
 
     public ImageView addLayer(String imageName)
@@ -65,8 +69,8 @@ public class IWDrawer {
     {
         if (canvas != null) {
             canvas.drawColor(Color.WHITE);
-            imageView.setImageBitmap(null);
             imageView.setImageBitmap(bitmap);
+            bitmap = null;
         }
     };
 

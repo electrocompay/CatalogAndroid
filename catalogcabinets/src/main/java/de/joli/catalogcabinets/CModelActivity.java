@@ -53,8 +53,10 @@ public class CModelActivity extends ModelActivity implements IWModelSelectorView
 
     @Override
     protected void drawAll() {
-        drawer.clear();
-        drawer.drawForniture(cabinet);
+        if (lockDraw == 0) {
+            drawer.clear();
+            drawer.drawForniture(cabinet);
+        }
     }
 
     @Override
