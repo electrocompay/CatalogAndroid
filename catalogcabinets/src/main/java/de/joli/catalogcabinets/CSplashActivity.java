@@ -30,7 +30,7 @@ public class CSplashActivity extends SplashActivity {
 
     @Override
     protected long getExpansionFileSize() {
-        return 965885188;
+        return 1009458751;
     }
 
     @Override

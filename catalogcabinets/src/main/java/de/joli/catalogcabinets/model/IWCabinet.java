@@ -160,6 +160,9 @@ public class IWCabinet extends IWFurniture {
     }
 
     public IWColor getTop() {
+        if (parentCabinet != null) {
+            return parentCabinet.top;
+        }
         return top;
     }
 
@@ -248,11 +251,7 @@ public class IWCabinet extends IWFurniture {
     }
 
     public boolean isUseStripe() {
-        return useStripe;
-    }
-
-    public void setUseStripe(boolean useStripe) {
-        this.useStripe = useStripe;
+        return model.getCode().equals("J83");
     }
 
     public boolean isShowLegs() {

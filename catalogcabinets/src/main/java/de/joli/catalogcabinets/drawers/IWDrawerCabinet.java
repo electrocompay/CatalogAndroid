@@ -50,14 +50,16 @@ public class IWDrawerCabinet extends IWDrawer {
         String mask = "%s-%s%s-%s-%s%s-%d%s";
         String modelMask = "";
 
-        if (cabinet.getSize().getCode().equals("1,0")) {
-            modelMask = "1D";
-        } else if (cabinet.getSize().getCode().equals("2,0")) {
-            modelMask = "2D";
-        } else if (cabinet.getSize().getCode().equals("2,1")) {
-            modelMask = "LDD";
-        } else if (cabinet.getSize().getCode().equals("0,3")) {
-            modelMask = "3L";
+        if (cabinet.getSize() != null && cabinet.getSize().getCode() != null) {
+            if (cabinet.getSize().getCode().equals("1,0")) {
+                modelMask = "1D";
+            } else if (cabinet.getSize().getCode().equals("2,0")) {
+                modelMask = "2D";
+            } else if (cabinet.getSize().getCode().equals("2,1")) {
+                modelMask = "LDD";
+            } else if (cabinet.getSize().getCode().equals("0,3")) {
+                modelMask = "3L";
+            }
         }
         if ((position == 4 && !sufix) || (position == 3 && modelMask.equals("1D"))) {
             modelMask = modelMask.concat("a");
@@ -68,33 +70,35 @@ public class IWDrawerCabinet extends IWDrawer {
         filename = filename.replace("F-", "");
         addLayer(filename);
 
-        if (cabinet.getSize().getCode().equals("1,0") || cabinet.getSize().getCode().equals("2,0")) {
-            for (int i = 0; i < cabinet.getColors().size(); i++) {
-                IWColor color = cabinet.getColors().get(i);
-                String index = cabinet.getColors().size() > 1 ? String.format("%d", i + 1) : "";
-                if (cabinet.getSize().getCode().equals("2,1")) {
+        if (cabinet.getSize() != null && cabinet.getSize().getCode() != null) {
+            if (cabinet.getSize().getCode().equals("1,0") || cabinet.getSize().getCode().equals("2,0")) {
+                for (int i = 0; i < cabinet.getColors().size(); i++) {
+                    IWColor color = cabinet.getColors().get(i);
+                    String index = cabinet.getColors().size() > 1 ? String.format("%d", i + 1) : "";
+                    if (!cabinet.getSize().getCode().equals("2,1")) {
+                        filename = String.format(mask, modelCode, modelMask, strSufix, color.getCode(), "F", index, position, strSufix);
+                        addLayer(filename);
+                    }
+                }
+            }
+
+
+            if (cabinet.getSize().getCode().equals("2,1")) {
+                filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getDrawers().get(0).getCode(), "F", "1", position, strSufix);
+                addLayer(filename);
+                filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getColors().get(0).getCode(), "F", "2", position, strSufix);
+                addLayer(filename);
+                filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getColors().get(1).getCode(), "F", "3", position, strSufix);
+                addLayer(filename);
+            }
+
+            if (cabinet.getSize().getCode().equals("0,3")) {
+                for (int i = 0; i < cabinet.getDrawers().size(); i++) {
+                    IWColor color = cabinet.getDrawers().get(i);
+                    String index = String.format("%d", i + 1);
                     filename = String.format(mask, modelCode, modelMask, strSufix, color.getCode(), "F", index, position, strSufix);
                     addLayer(filename);
                 }
-            }
-        }
-
-
-        if (cabinet.getSize().getCode().equals("2,1")) {
-            filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getDrawers().get(0).getCode(), "F", "1", position, strSufix);
-            addLayer(filename);
-            filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getColors().get(0).getCode(), "F", "2", position, strSufix);
-            addLayer(filename);
-            filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getColors().get(1).getCode(), "F", "3", position, strSufix);
-            addLayer(filename);
-        }
-
-        if (cabinet.getSize().getCode().equals("0,3")) {
-            for (int i = 0; i < cabinet.getDrawers().size(); i++) {
-                IWColor color = cabinet.getDrawers().get(i);
-                String index = String.format("%d", i + 1);
-                filename = String.format(mask, modelCode, modelMask, strSufix, color.getCode(), "F", index, position, strSufix);
-                addLayer(filename);
             }
         }
 
@@ -106,13 +110,13 @@ public class IWDrawerCabinet extends IWDrawer {
         filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getSide().getCode(), "S", "", position, strSufix);
         addLayer(filename);
 
-        if (cabinet.isUseStripe()) {
+        if (cabinet.isUseStripe() && cabinet.getStripe() != null) {
             filename = String.format(mask, modelCode, modelMask, strSufix, cabinet.getStripe().getCode(), "F", "", position, strSufix);
             filename = filename.replace("C83", "J83");
             addLayer(filename);
-            filename = String.format("%s-%dD%-%s-F-%d%", cabinet.getModel().getCode(), cabinet.getColors().size(), strSufix, cabinet.getStripe().getCode(), position, strSufix);
+            filename = String.format("%s-%dD%s-%s-F-%d%s", cabinet.getModel().getCode(), cabinet.getColors().size(), strSufix, cabinet.getStripe().getCode(), position, strSufix);
             addLayer(filename);
-            filename = String.format("%s-%dL%-%s-F-%d%", cabinet.getModel().getCode(), cabinet.getDrawers().size(), strSufix, cabinet.getStripe().getCode(), position, strSufix);
+            filename = String.format("%s-%dL%s-%s-F-%d%s", cabinet.getModel().getCode(), cabinet.getDrawers().size(), strSufix, cabinet.getStripe().getCode(), position, strSufix);
             addLayer(filename);
         }
 

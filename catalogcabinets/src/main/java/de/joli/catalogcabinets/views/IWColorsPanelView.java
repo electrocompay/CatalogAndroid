@@ -271,7 +271,7 @@ public class IWColorsPanelView extends FrameLayout implements IWColorSelectorVie
                 door9.setColor(color);
             }
         } else {
-            int selectedTag = findSelectedTag(getRootView());
+            int selectedTag = findSelectedTag(door1.getRootView());
 
             if (selectedTag < 2) {
                 if (cabinet.getColors().size() > 0 && (door1.isSelected() || cabinet.isOneColorMode())) {
@@ -309,7 +309,24 @@ public class IWColorsPanelView extends FrameLayout implements IWColorSelectorVie
     }
 
     public int findSelectedTag(View view) {
-        if (view instanceof IWColorSelectorView) {
+        IWColorSelectorView selector = null;
+        if (door1 != null && door1.isSelected()) selector = door1;
+        if (door2 != null && door2.isSelected()) selector = door2;
+        if (door3 != null && door3.isSelected()) selector = door3;
+        if (door4 != null && door4.isSelected()) selector = door4;
+        if (door5 != null && door5.isSelected()) selector = door5;
+        if (door6 != null && door6.isSelected()) selector = door6;
+        if (door7 != null && door7.isSelected()) selector = door7;
+        if (door8 != null && door8.isSelected()) selector = door8;
+        if (door9 != null && door9.isSelected()) selector = door9;
+        if (picDrawer1 != null && picDrawer1.isSelected()) selector = picDrawer1;
+        if (picDrawer2 != null && picDrawer2.isSelected()) selector = picDrawer2;
+        if (picDrawer3 != null && picDrawer3.isSelected()) selector = picDrawer3;
+        if (stripe != null && stripe.isSelected()) selector = stripe;
+
+        if (selector != null) return Integer.parseInt((String) selector.getTag());
+
+      /*  if (view instanceof IWColorSelectorView) {
             IWColorSelectorView selector = (IWColorSelectorView) view;
             if (selector.isSelected()) {
                 return Integer.parseInt((String) selector.getTag());
@@ -320,7 +337,7 @@ public class IWColorsPanelView extends FrameLayout implements IWColorSelectorVie
                 View childView = viewGroup.getChildAt(i);
                 return findSelectedTag(childView);
             }
-        }
+        }*/
         return 0;
     }
 

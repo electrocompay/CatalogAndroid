@@ -26,7 +26,7 @@ import kankan.wheel.widget.adapters.WheelViewAdapter;
 /**
  * Created by abel.miranda on 10/4/14.
  */
-public class IWPickerView extends FrameLayout implements OnWheelChangedListener, WheelViewAdapter, OnWheelScrollListener {
+public class IWPickerView extends FrameLayout implements WheelViewAdapter, OnWheelScrollListener {
 
 
     @Override
@@ -41,11 +41,11 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
             _pickerView.setCurrentItem(_lastRow, true);
         } else {
             IWColor newSelection = items.get(newValue);
-            if (newSelection != selection) {
+            if (items.indexOf(newSelection) != _lastRow) {
                 _lastRow = newValue;
-                selection = newSelection;
+          //      selection = newSelection;
                 if (onPickerViewChanged != null) {
-                    onPickerViewChanged.didSelectRow(this, selection);
+                    onPickerViewChanged.didSelectRow(this, newSelection);
                 }
             }
         }
@@ -63,7 +63,7 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     private OnPickerViewChanged onPickerViewChanged;
 
     private String title;
-    private IWColor selection;
+//    private IWColor selection;
     private boolean pkEnabled;
 //    private int selectedIndex;
     private int pkleft;
@@ -78,13 +78,13 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     public void reloadAllComponents(){
         _pickerView.refreshDrawableState();
         _pickerView.setCurrentItem(0, false);
-        selection = items.get(0);
+        //selection = items.get(0);
     };
 
     public void reset(){
         if (items.size() > 0) {
             _pickerView.setCurrentItem(0);
-            selection = items.get(0);
+           // selection = items.get(0);
         }
     };
 
@@ -154,11 +154,11 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     }
 
     public IWColor getSelection() {
-        return selection;
+        return items.get(getSelectedIndex());
     }
 
     public void setSelection(IWColor selection) {
-        this.selection = selection;
+        setSelectedIndex(items.indexOf(selection));
     }
 
     public int getSelectedIndex() {
@@ -205,22 +205,6 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
     }
 
     @Override
-    public void onChanged(WheelView wheel, int oldValue, int newValue) {
-        if (selectionInvalid(newValue)) {
-            _pickerView.setCurrentItem(_lastRow, true);
-        } else {
-            IWColor newSelection = items.get(newValue);
-            if (newSelection != selection) {
-                _lastRow = newValue;
-                selection = newSelection;
-                if (onPickerViewChanged != null) {
-                    onPickerViewChanged.didSelectRow(this, selection);
-                }
-            }
-        }
-    }
-
-    @Override
     public int getItemsCount() {
         if (items != null) {
             return items.size();
@@ -242,12 +226,12 @@ public class IWPickerView extends FrameLayout implements OnWheelChangedListener,
         }
 
 
+        pickerLabel.setLines(2);
         if (selectionInvalid(index)) {
          //   stroke.hidden = NO;
             pickerLabel.setTextColor(Color.rgb(255/2, 255/2, 255/2));
         } else {
          //   stroke.hidden = YES;reakByWordWrapping];
-            pickerLabel.setLines(2);
 //            pickerLabel.setBackground(new ColorDrawable(Color.TRANSPARENT));
 //            stroke = new StrokeLabel(getContext());
             //   pickerLabel. addSubview:stroke];
