@@ -2,19 +2,19 @@
 <merger version="2" >
 
     <dataSet config="debug" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res" >
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res" >
             <file
                 name="wheel_bg"
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/drawable/wheel_bg.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/drawable/wheel_bg.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="wheel_val"
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/drawable/wheel_val.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/drawable/wheel_val.xml"
                 qualifiers=""
                 type="drawable" />
             <file
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/values/values.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/intermediates/bundles/debug/res/values/values.xml"
                 qualifiers="" >
                 <string name="title_activity_splash" ><![CDATA[Tables & Chairs]]></string>
                 <string name="title_activity_catalog" >Catalog
@@ -25,9 +25,9 @@
         </source>
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/androidTest/res" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/generated/res/rs/test/debug" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/generated/res/generated/test/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/androidTest/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/generated/res/rs/test/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/generated/res/generated/test/debug" />
     </dataSet>
 
 </merger>

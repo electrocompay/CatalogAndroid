@@ -2,19 +2,19 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/main/res" >
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/main/res" >
             <file
                 name="wheel_bg"
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/main/res/drawable/wheel_bg.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/main/res/drawable/wheel_bg.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="wheel_val"
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/main/res/drawable/wheel_val.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/main/res/drawable/wheel_val.xml"
                 qualifiers=""
                 type="drawable" />
             <file
-                path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/main/res/values/strings.xml"
+                path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/main/res/values/strings.xml"
                 qualifiers="" >
                 <string name="title_activity_splash" ><![CDATA[Tables & Chairs]]></string>
                 <string name="title_activity_catalog" >Catalog
@@ -23,11 +23,11 @@
                 </string>
             </file>
         </source>
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/generated/res/rs/debug" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/build/generated/res/generated/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/generated/res/rs/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/debug/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/debug/res" />
     </dataSet>
 
 </merger>

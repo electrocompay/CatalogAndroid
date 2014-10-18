@@ -2,12 +2,12 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/src/main/res" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/build/generated/res/rs/debug" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/build/generated/res/generated/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/src/main/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/build/generated/res/rs/debug" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/src/debug/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/src/debug/res" />
     </dataSet>
 
 </merger>

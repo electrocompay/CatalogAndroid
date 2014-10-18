@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="debug" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/build/intermediates/bundles/debug/assets" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/build/intermediates/bundles/debug/assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/licensing/src/androidTest/assets" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/licensing/src/androidTest/assets" />
     </dataSet>
 
 </merger>

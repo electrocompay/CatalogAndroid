@@ -2,12 +2,12 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/zip_file/src/main/res" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/zip_file/build/generated/res/rs/release" />
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/zip_file/build/generated/res/generated/release" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/zip_file/src/main/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/zip_file/build/generated/res/rs/release" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/zip_file/build/generated/res/generated/release" />
     </dataSet>
     <dataSet config="release" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/zip_file/src/release/res" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/zip_file/src/release/res" />
     </dataSet>
 
 </merger>

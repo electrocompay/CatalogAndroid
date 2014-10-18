@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/main/assets" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/main/assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/abel.miranda/Documents/CatalogAndroid/wheel/src/debug/assets" />
+        <source path="/Users/indianwebs/Documents/CatalogAndroid/wheel/src/debug/assets" />
     </dataSet>
 
 </merger>
