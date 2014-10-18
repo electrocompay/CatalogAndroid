@@ -35,6 +35,6 @@ public class CSplashActivity extends SplashActivity {
 
     @Override
     protected int getExpansionVersion() {
-        return 2;
+        return 9;
     }
 }
